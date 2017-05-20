@@ -1,0 +1,38 @@
+<h2 class="page-header">Register</h2>
+<form (submit)="onRegisterSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" [(ngModel)]="name" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" [(ngModel)]="username" name="username" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" [(ngModel)]="email" name="email" class="form-control" >
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" [(ngModel)]="comfirmpassword" name="comfirmpassword" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Contact Number</label>
+    <input type="number" [(ngModel)]="contactnumber" name="contactnumber" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Experience(In Yrs.)</label>
+    <input type="text" [(ngModel)]="experience" name="experience" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Skill</label>
+    <select [(ngModel)]="skill" name="skill"  class="form-control">
+          <option *ngFor="let c of skills" [value]="c">{{c}}</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>

@@ -1,0 +1,17 @@
+<h2 class="page-header">Dashboard</h2>
+<p>Welcome to your dashboard</p>
+<div *ngIf="user">
+  <h2 class="page-header">All Jobs</h2>
+  <table>
+      <tbody>
+          <tr *ngFor="let jobs of user">
+              <td>{{jobs.name}}</td>
+              <td>{{jobs.description}}</td>
+              <td>{{jobs.minexperience}} - {{jobs.maxexperience}}</td>
+              <td>{{jobs.skills}}</td>
+          </tr>
+      </tbody>
+  </table>
+
+
+</div>
