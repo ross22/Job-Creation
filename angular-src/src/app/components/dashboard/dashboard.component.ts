@@ -22,5 +22,9 @@ export class DashboardComponent implements OnInit {
       return false;
     });
   }
+  craeteNewJob(){
+    this.router.navigate(['/newjob']);
+    return false;
+  }
 
 }

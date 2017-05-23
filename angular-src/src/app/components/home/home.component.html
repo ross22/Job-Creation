@@ -1,22 +1,32 @@
 <div class="jumbotron text-center">
-  <h1>MEAN Authentication App</h1>
-  <p class="lead">Welcome to our custom MEAN authentication application built from scratch</p>
+  <h1>Hiring Application</h1>
+  <p class="lead">Welcome to our job portal.</p>
   <div>
-    <a class="btn btn-primary" [routerLink]="['/register']">Register</a> <a class="btn btn-default" [routerLink]="['/login']">Login</a>
+    <a *ngIf="!authService.loggedIn()" class="btn btn-primary" [routerLink]="['/register']">Register</a> 
+    <a *ngIf="!authService.loggedIn()" class="btn btn-default" [routerLink]="['/login']">Login</a>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-4">
-    <h3>Express Backend</h3>
-    <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+<div class="row" *ngIf="joblist">
+  <h2 class="page-header">All Jobs</h2>
+  
+  <div class="table-responsive">          
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>description</th>
+                <th>Exp. in Yrs</th>
+                <th>Skills</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let jobs of joblist">
+                <td>{{jobs.name}}</td>
+                <td>{{jobs.description}}</td>
+                <td>{{jobs.minexperience}} - {{jobs.maxexperience}}</td>
+                <td>{{jobs.skills}}</td>
+            </tr>
+        </tbody>
+    </table>
   </div>
-  <div class="col-md-4">
-    <h3>Angular-CLI</h3>
-    <p>Angular-CLI to generate components, services and more. Local dev server and easy compilation</p>
-  </div>
-  <div class="col-md-4">
-    <h3>JWT Tokens</h3>
-    <p>Full featured authentication using JSON web tokens. Login and store user data</p>
-  </div>
-</div>

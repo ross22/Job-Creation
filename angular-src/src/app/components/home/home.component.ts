@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+ joblist:Object;
 
+  constructor(private authService:AuthService, private router:Router) { }
+  
   ngOnInit() {
+    this.authService.getAllJobs().subscribe(profile => {
+      this.joblist = profile;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 
 }
