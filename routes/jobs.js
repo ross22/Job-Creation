@@ -8,15 +8,7 @@ const Job = require('../models/job');
 
 // Register
 router.post('/createjob', (req, res, next) => {
-  let newJob = new Job({
-    name: req.body.name,
-    code: req.body.code,
-    description: req.body.description,
-    minexperience: req.body.minexperience,
-    maxexperience: req.body.maxexperience,
-    skills : req.body.skills,
-    status : req.body.status
-  });
+  let newJob = req.body;
 
   Job.addJob(newJob, (err, job) => {
     if(err){
@@ -25,6 +17,29 @@ router.post('/createjob', (req, res, next) => {
       res.json({success: true, msg:'Job Created'});
     }
   });
+});
+
+router.put('/updateJob/:_id', (req, res, next) => {
+  let newJob = req.body;
+  let id = req.params._id;
+  Job.updateJob(id,newJob,{}, (err, job) => {
+    if(err){
+      res.json({success: false, msg:'Failed to update job'});
+    } else {
+      res.json({success: true, msg:'Job updated'});
+    }
+  });
+});
+
+router.delete('/deletejob/:_id', (req, res) => {
+	var id = req.params._id;
+	Job.removeJob(id, (err, job) => {
+		if(err){
+      res.json({success: false, msg:'Failed to delete job'});
+    } else {
+      res.json({success: true, msg:'Job deleted'});
+    }
+	});
 });
 
 router.get('/getAllJobs',(req,res) => {

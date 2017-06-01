@@ -1,6 +1,6 @@
 <h2 class="page-header">Dashboard</h2>
 <p>Welcome to your dashboard</p>
-<div *ngIf="user">
+<div *ngIf="jobs">
   <h2 class="page-header">All Jobs</h2>
   
   <div class="table-responsive">          
@@ -11,14 +11,19 @@
                 <th>description</th>
                 <th>Exp. in Yrs</th>
                 <th>Skills</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let jobs of user">
-                <td>{{jobs.name}}</td>
-                <td>{{jobs.description}}</td>
-                <td>{{jobs.minexperience}} - {{jobs.maxexperience}}</td>
-                <td>{{jobs.skills}}</td>
+            <tr *ngFor="let job of jobs">
+                <td>{{job.name}}</td>
+                <td>{{job.description}}</td>
+                <td>{{job.minexperience}} - {{job.maxexperience}}</td>
+                <td>{{job.skills}}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-md" (click)="updateJob(job)">Update</button>
+                    <button type="button" class="btn btn-danger btn-md" (click)="deleteJob(job._id)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>

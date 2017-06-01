@@ -47,6 +47,20 @@ export class AuthService {
     return this.http.post('http://localhost:3000/jobs/createjob', newJob,{headers: headers})
       .map(res => res.json());
   }
+
+  updateJob(id,newJob){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.put('http://localhost:3000/jobs/updateJob/'+id, newJob,{headers: headers})
+      .map(res => res.json());
+  }
+
+  deletejob(id){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.delete('http://localhost:3000/jobs/deletejob/'+id,{headers: headers})
+      .map(res => res.json());
+  }
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));

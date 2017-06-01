@@ -38,8 +38,27 @@ const Job = module.exports = mongoose.model('Job', JobSchema);
 
 module.exports.addJob = function(newJob, callback){
     console.log('called');
-  newJob.save(callback);
+    Job.save(callback);
 } 
+
+module.exports.updateJob = function(id,jobdata,options,callback){
+  var query = {_id: id};
+	var update = {
+		  name : jobdata.name,
+      code : jobdata.code,
+      description : jobdata.description,
+      minexperience : jobdata.minexperience,
+      maxexperience : jobdata.maxexperience,
+      skills : jobdata.skills,
+      status : jobdata.status
+	}
+	Job.findOneAndUpdate(query, update, options, callback);
+}
+
+module.exports.removeJob = (id, callback) => {
+	var query = {_id: id};
+	Job.remove(query, callback);
+}
 
 module.exports.allJob = function(callback){
   Job.find(callback);

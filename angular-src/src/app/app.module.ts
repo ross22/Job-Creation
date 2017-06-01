@@ -14,9 +14,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
+import {InfoService} from './services/info.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { NewjobComponent } from './components/newjob/newjob.component';
+import { JobdescComponent } from './components/jobdesc/jobdesc.component';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -36,7 +38,8 @@ const appRoutes: Routes =  [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    NewjobComponent
+    NewjobComponent,
+    JobdescComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ const appRoutes: Routes =  [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, InfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
